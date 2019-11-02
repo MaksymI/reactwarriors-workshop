@@ -1,13 +1,8 @@
 import React from "react";
 import MovieItem from "./MovieItem";
-import { API_URL, API_KEY_3 } from '../utils/api';
-import MovieTabs from './MovieTabs';
-import { FILTERS } from '../constants/filters'
-
-
-// UI = fn(state, props)
-
-// App = new React.Component()
+import { API_URL, API_KEY_3 } from "../utils/api";
+import MovieTabs from "./MovieTabs";
+import { FILTERS } from "../constants/filters";
 
 class App extends React.Component {
   constructor() {
@@ -21,23 +16,23 @@ class App extends React.Component {
   }
 
   getMovies() {
-    fetch(`${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}`)
+    fetch(
+      `${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}`
+    )
       .then(response => response.json())
       .then(data => {
-            this.setState({
-              movies: data.results
-            });
-          }
-        );
+        this.setState({
+          movies: data.results
+        });
+      });
   }
 
   componentDidMount() {
-    console.log('componentDidMount');
     this.getMovies();
   }
 
   componentDidUpdate(prevProrps, prevState) {
-    if(prevState.sort_by !== this.state.sort_by) {
+    if (prevState.sort_by !== this.state.sort_by) {
       this.getMovies();
     }
   }
@@ -76,7 +71,7 @@ class App extends React.Component {
   };
 
   render() {
-    console.log("render", this);
+
     return (
       <div className="container">
         <div className="row mt-4">
@@ -86,7 +81,7 @@ class App extends React.Component {
                 <MovieTabs
                   sort_by={this.state.sort_by}
                   updateSortBy={this.updateSortBy}
-                  />
+                />
               </div>
             </div>
             <div className="row">
