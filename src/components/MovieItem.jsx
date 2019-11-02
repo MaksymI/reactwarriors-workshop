@@ -5,6 +5,12 @@ class MovieItem extends React.Component {
     willWatch: false
   };
 
+  componentWillUnmount() {
+    console.log('unmount--', this.props.data.title);
+  }
+  
+  
+
   render() {
     const {
       data,
