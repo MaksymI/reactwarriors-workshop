@@ -2,6 +2,7 @@ import React from "react";
 import MovieItem from "./MovieItem";
 import { API_URL, API_KEY_3 } from '../utils/api';
 import MovieTabs from './MovieTabs';
+import { FILTERS } from '../constants/filters'
 
 
 // UI = fn(state, props)
@@ -15,7 +16,7 @@ class App extends React.Component {
     this.state = {
       movies: [],
       moviesWillWatch: [],
-      sort_by: 'revenue.desc'
+      sort_by: FILTERS.popularity
     };
     console.log('componentDidMount');
   }
@@ -38,20 +39,14 @@ class App extends React.Component {
   }
 
   componentDidUpdate(prevProrps, prevState) {
-    console.log('prevProrps--', prevProrps);
-    console.log('prevState--', prevState);
-    console.log('this--', this.props, this.state);
     if(prevState.sort_by !== this.state.sort_by) {
       this.getMovies();
     }
   }
 
   deleteMovie = movie => {
-    console.log(movie.id);
     const updateMovies = this.state.movies.filter(item => item.id !== movie.id);
-    console.log(updateMovies);
 
-    // this.state.movies = updateMovies;
     this.setState({
       movies: updateMovies
     });

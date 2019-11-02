@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from 'classnames';
+import { FILTERS } from '../constants/filters'
 
 class MovieTabs extends React.Component {
   shouldComponentUpdate(nextProps) {
@@ -23,8 +24,8 @@ class MovieTabs extends React.Component {
         <li className="nav-item">
           <div
             // className={getClassLink("popularity.desc")}
-            onClick={handleClick("popularity.desc")}
-            className={tabClass("popularity.desc")}
+            onClick={handleClick(FILTERS.popularity)}
+            className={tabClass(FILTERS.popularity)}
           >
             Popularity desc
           </div>
@@ -32,8 +33,8 @@ class MovieTabs extends React.Component {
         <li className="nav-item">
           <div
             // className={getClassLink("revenue.desc")}
-            onClick={handleClick("revenue.desc")}
-            className={tabClass("revenue.desc")}
+            onClick={handleClick(FILTERS.revenue)}
+            className={tabClass(FILTERS.revenue)}
           >
             Revenue desc
           </div>
@@ -41,8 +42,8 @@ class MovieTabs extends React.Component {
         <li className="nav-item">
           <div
             // className={getClassLink("vote_average.desc")}
-            onClick={handleClick("vote_average.desc")}
-            className={tabClass("vote_average.desc")}
+            onClick={handleClick(FILTERS.vote_average)}
+            className={tabClass(FILTERS.vote_average)}
           >
             Vote avetage desc
           </div>
