@@ -5,12 +5,6 @@ class MovieItem extends React.Component {
     willWatch: false
   };
 
-  componentWillUnmount() {
-    console.log('unmount--', this.props.data.title);
-  }
-  
-  
-
   render() {
     const {
       data,
@@ -18,7 +12,14 @@ class MovieItem extends React.Component {
       addMovieToWillWatch,
       deleteMovieFromWillWatch
     } = this.props;
-    // props.data = {};
+
+    const handleWillWatchClick = (willWatch, action) => () => {
+      this.setState({
+        willWatch
+      });
+      action(data);
+    };
+
     return (
       <div className="card">
         <img
@@ -35,12 +36,7 @@ class MovieItem extends React.Component {
               <button
                 type="button"
                 className="btn btn-success"
-                onClick={() => {
-                  this.setState({
-                    willWatch: false
-                  });
-                  deleteMovieFromWillWatch(data);
-                }}
+                onClick={handleWillWatchClick(false, deleteMovieFromWillWatch)}
               >
                 Will Watch
               </button>
@@ -48,12 +44,7 @@ class MovieItem extends React.Component {
                 <button
                   type="button"
                   className="btn btn-secondary"
-                  onClick={() => {
-                    this.setState({
-                      willWatch: true
-                    });
-                    addMovieToWillWatch(data);
-                  }}
+                  onClick={handleWillWatchClick(true, addMovieToWillWatch)}
                 >
                   Will Watch
               </button>
