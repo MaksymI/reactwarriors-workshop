@@ -18,14 +18,12 @@ class App extends React.Component {
       moviesWillWatch: [],
       sort_by: FILTERS.popularity
     };
-    console.log('componentDidMount');
   }
 
   getMovies() {
     fetch(`${API_URL}/discover/movie?api_key=${API_KEY_3}&sort_by=${this.state.sort_by}`)
       .then(response => response.json())
       .then(data => {
-            console.log('data--', data);
             this.setState({
               movies: data.results
             });
