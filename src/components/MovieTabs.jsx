@@ -2,7 +2,7 @@ import React from "react";
 import classNames from 'classnames';
 import { FILTERS } from '../constants/filters'
 
-class MovieTabs extends React.Component {
+export default class MovieTabs extends React.Component {
   shouldComponentUpdate(nextProps) {
     if (nextProps.sort_by !== this.props.sort_by) {
       return true;
@@ -52,5 +52,3 @@ class MovieTabs extends React.Component {
     );
   }
 }
-
-export default MovieTabs;

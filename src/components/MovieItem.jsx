@@ -1,6 +1,6 @@
 import React from "react";
 
-class MovieItem extends React.Component {
+export default class MovieItem extends React.Component {
   state = {
     willWatch: false
   };
@@ -63,5 +63,3 @@ class MovieItem extends React.Component {
     );
   }
 }
-
-export default MovieItem;
